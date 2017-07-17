@@ -1,4 +1,6 @@
+
 <script>
+    import Poster from './Poster.vue';
     export default {
         name: 'Movie',
         props: {
@@ -7,10 +9,10 @@
                 required: true
             }
         },
+        components: {
+            Poster,
+        },
         computed: {
-            posterPath() {
-                return `https://image.tmdb.org/t/p/w500/${this.movie.poster_path}`;
-            },
             movieDetailsPath() {
                 return `/movie/${this.movie.id}`;
             }
@@ -21,14 +23,14 @@
 <template>
  <div class="card">
     <router-link :to="movieDetailsPath">
-        <img class="card-img-top" :src="posterPath" :alt="movie.original_title">
+        <poster class="card-img-top" :posterName="movie.poster_path" :alt="movie.original_title" />
     </router-link>
     <div class="card-block">
         <h4 class="card-title">{{movie.original_title}}</h4>
         <p class="card-text">{{movie.overview}}</p>
     </div>
     <div class="card-footer">
-        <small class="text-muted">Average rating: {{movie.vote_average.toFixed(2)}}</small>
+        <small class="text-muted">Average rating: {{movie.vote_average.toFixed(1)}}</small>
     </div>
   </div>
 </template>

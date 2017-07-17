@@ -35,10 +35,11 @@
     <section>
         <app-header />
         <loader v-if="isLoading" />
-        <section class="container py-5">
+        <section class="container">
             <div v-for="group in groupedMovies" class="card-deck">
                 <movie v-for="movie in group" key="movie.id" :movie="movie" />
             </div>
         </section>
     </section>
 </template>
+

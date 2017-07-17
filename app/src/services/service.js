@@ -1,13 +1,13 @@
 export default {
-    fetchMovies(cb) {
+    fetchMovies() {
         return firebase.database().ref('/movies').once('value');
     },
 
-    fetchMovieTimes() {
-
+    fetchMovieDetails(id) {
+        return firebase.database().ref(`/movieDetails/${id}`).once('value');
     },
 
-    fetchMovieDetails() {
-
+    fetchMovieTimes(id) {
+        return firebase.database().ref(`/movieTimes/${id}`).once('value');
     }
 }
